@@ -21,7 +21,7 @@
   <!-- Custom styles for this template -->
   <link href="css/resume.min.css" rel="stylesheet">
   <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153104715-1"></script>
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153104715-1"></script> -->
   <script>
     window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -448,10 +448,13 @@
 
           </ul> 
 
-          <hide> 
-          <script type="text/javascript" id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?d=WZwFHko5la3WJGyM1OpOeSnTQ-bGxnGJqi_i3IDuR0c&cl=ffffff&w=a"></script>
-          <a href="https://clustrmaps.com/site/1bbrn"  title="Visit tracker"><img src="//www.clustrmaps.com/map_v2.png?d=WZwFHko5la3WJGyM1OpOeSnTQ-bGxnGJqi_i3IDuR0c&cl=ffffff" /></a>
-          </hide>
+          <button type="button"
+          onclick="document.getElementById('demo').innerHTML = Date()">
+          See visitors </button>
+          
+          <p id="demo">          <script display type="text/javascript" id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?d=WZwFHko5la3WJGyM1OpOeSnTQ-bGxnGJqi_i3IDuR0c&cl=ffffff&w=a"></script>
+          </p>      
+          <!-- <a href="https://clustrmaps.com/site/1bbrn"  title="Visit tracker"><img src="//www.clustrmaps.com/map_v2.png?d=WZwFHko5la3WJGyM1OpOeSnTQ-bGxnGJqi_i3IDuR0c&cl=ffffff" /></a> -->
       </div>
     </section>
 
