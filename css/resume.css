@@ -30,12 +30,12 @@ h6 {
 }
 
 h1 {
-  font-size: 6rem;
+  font-size: 4rem;
   line-height: 5.5rem;
 }
 
 h2 {
-  font-size: 3.5rem;
+  font-size: 3rem;
 }
 
 h3 {
@@ -134,8 +134,8 @@ p.lead {
 }
 
 section.resume-section {
-  padding-top: 5rem !important;
-  padding-bottom: 5rem !important;
+  padding-top: 4rem !important;
+  padding-bottom: 4rem !important;
   max-width: 75rem;
 }
 
@@ -145,7 +145,7 @@ section.resume-section .resume-item .resume-date {
 
 @media (min-width: 768px) {
   section.resume-section {
-    min-height: 100vh;
+    min-height: 90vh;
   }
   section.resume-section .resume-item .resume-date {
     min-width: 18rem;
