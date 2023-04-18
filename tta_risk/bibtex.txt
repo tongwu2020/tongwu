@@ -1,0 +1,8 @@
+@misc{wu2023uncovering,
+      title={Uncovering Adversarial Risks of Test-Time Adaptation}, 
+      author={Tong Wu and Feiran Jia and Xiangyu Qi and Jiachen T. Wang and Vikash Sehwag and Saeed Mahloujifar and Prateek Mittal},
+      year={2023},
+      eprint={2301.12576},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG}
+}
