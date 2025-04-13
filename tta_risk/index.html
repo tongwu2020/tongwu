@@ -4,202 +4,287 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Uncovering Adversarial Risks of Test-Time Adaptation
-    </title>
+    <title>Uncovering Adversarial Risks of Test-Time Adaptation</title>
 
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6">
-    </script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
     <style>
       body {
-        font-family:Arial;
-        font-size:20px;
-        margin:60px auto;
-        width:auto;
-        max-width:900px;
+        font-family: 'Open Sans', Arial, sans-serif;
+        font-size: 18px;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+        color: #333;
+        background-color: #f9f9f9;
+      }
+
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 40px 20px;
+        background-color: #fff;
+        box-shadow: 0 0 20px rgba(0,0,0,0.05);
+        border-radius: 8px;
+      }
+
+      .header {
+        text-align: center;
+        padding-bottom: 20px;
+      }
+
+      .title {
+        font-size: 42px;
+        font-weight: 600;
+        color: #2c3e50;
+        margin-bottom: 20px;
+        line-height: 1.2;
+      }
+
+      .authors {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+
+      .author {
+        display: inline-block;
+        margin: 0 5px;
+      }
+
+      .author a {
+        color: #3498db;
+        text-decoration: none;
+        transition: color 0.3s;
+        font-weight: 500;
+      }
+
+      .author a:hover {
+        color: #2980b9;
+        text-decoration: underline;
+      }
+
+      .affiliations {
+        display: flex;
+        justify-content: center;
+        margin: 15px 0;
+      }
+
+      .affiliation {
+        margin: 0 20px;
+        text-align: center;
       }
 
       hr {
-        border:0;
-        height:1.0px;
-        background-image:linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+        border: 0;
+        height: 1px;
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1));
+        margin: 30px 0;
       }
 
-      .gap-30 {
-      width:100%;
-      height:30px;
+      .links {
+        text-align: center;
+        margin: 25px 0;
       }
 
-      .gap-20 {
-      width:100%;
-      height:20px;
+      .links a {
+        display: inline-block;
+        margin: 0 10px;
+        padding: 8px 15px;
+        background-color: #3498db;
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        transition: background-color 0.3s;
       }
 
-      .gap-10 {
-      width:100%;
-      height:10px;
+      .links a:hover {
+        background-color: #2980b9;
       }
 
-      .gap-5 {
-      width:100%;
-      height:5px;
+      .main-image {
+        width: 100%;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        margin: 20px 0;
       }
-      .paper {
+
+      .caption {
+        font-style: italic;
+        color: #555;
+        text-align: justify;
+        margin: 15px 0 30px 0;
+        padding: 0 15px;
+        font-size: 16px;
+      }
+
+      .section-title {
+        font-size: 28px;
+        color: #2c3e50;
+        text-align: center;
+        margin: 30px 0 20px 0;
+        font-weight: 600;
+      }
+
+      .abstract {
+        text-align: justify;
+        padding: 0 15px;
+        margin-bottom: 30px;
+      }
+
+      .paper-preview {
+        text-align: center;
+        margin: 30px 0;
+      }
+
+      .paper-preview img {
         max-width: 700px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        transition: transform 0.3s;
       }
+
+      .paper-preview img:hover {
+        transform: scale(1.02);
+      }
+
+      .gap-5 { height: 5px; }
+      .gap-10 { height: 10px; }
+      .gap-20 { height: 20px; }
+      .gap-30 { height: 30px; }
+
       @media (max-width: 910px) {
-        .paper {
+        .paper-preview img {
           max-width: 500px;
         }
+        .title {
+          font-size: 36px;
+        }
+        body {
+          font-size: 16px;
+        }
       }
+      
       @media (max-width: 610px) {
-        .paper {
+        .paper-preview img {
           max-width: 300px;
+        }
+        .title {
+          font-size: 30px;
+        }
+        .container {
+          padding: 20px 15px;
         }
       }
     </style>
   </head>
 
-  <div class="container">
   <body>
+    <div class="container">
+      <div class="header">
+        <h1 class="title">Uncovering Adversarial Risks of Test-Time Adaptation</h1>
+        
+        <div class="authors">
+          <div class="author">
+            <a href="https://tongwu2020.github.io/tongwu">Tong Wu</a>
+            <sup>1</sup>,
+          </div>
+          <div class="author">
+            <a href="https://scholar.google.com/citations?user=haBpKDQAAAAJ&hl=en">Feiran Jia</a>
+            <sup>2</sup>,
+          </div>
+          <div class="author">
+            <a href="https://unispac.github.io/">Xiangyu Qi</a>
+            <sup>1</sup>,
+          </div>
+          <div class="author">
+            <a href="https://tianhaowang.netlify.app/">Jiachen T. Wang</a>
+            <sup>1</sup>,
+          </div>
+          <div class="author">
+            <a href="https://vsehwag.github.io/">Vikash Sehwag</a>
+            <sup>1</sup>,
+          </div>
+          <div class="author">
+            <a href="https://smahloujifar.github.io/">Saeed Mahloujifar</a>
+            <sup>1</sup>,
+          </div>
+          <div class="author">
+            <a href="https://www.princeton.edu/~pmittal/">Prateek Mittal</a>
+            <sup>1</sup>
+          </div>
+        </div>
 
-    <center><span style="font-size:40px">
-      Uncovering Adversarial Risks of Test-Time Adaptation
-    </span></center>
-    <div class="gap-20"></div>
+        <div class="affiliations">
+          <div class="affiliation">
+            <span>Princeton University<sup>1</sup></span>
+          </div>
+          <div class="affiliation">
+            <span>PSU<sup>2</sup></span>
+          </div>
+        </div>
+      </div>
 
-    <!---------------------  authors --------------------->
-    <center>
-    <span style="font-size:20px">
-          &nbsp;
-          <div style="display:inline-block">
-          <a href=https://tongwu2020.github.io/tongwu>Tong Wu</a>
-          <sup style="font-size:15px">1</sup>,
-          </div>
-          &nbsp;
-          <div style="display:inline-block">
-          <a href="https://scholar.google.com/citations?user=haBpKDQAAAAJ&hl=en"> Feiran Jia</a>
-          <sup style="font-size:15px">2</sup>,
-          </div>
-          &nbsp;
-          <div style="display:inline-block">
-            <a href="https://unispac.github.io/"> Xiangyu Qi</a>
-          <sup style="font-size:15px">1</sup>,
-          </div>
-          &nbsp;
-          <div style="display:inline-block">
-            <a href="https://tianhaowang.netlify.app/"> Jiachen T. Wang</a>
-          <sup style="font-size:15px">1</sup>,
-          </div>
-          &nbsp;
-          <div style="display:inline-block">
-            <a href="https://vsehwag.github.io/"> Vikash Sehwag</a>
-            <sup style="font-size:15px">1</sup>,
-            </div>
-          &nbsp;
-          <div style="display:inline-block">
-            <a href="https://smahloujifar.github.io/"> Saeed Mahloujifar</a>
-            <sup style="font-size:15px">1</sup>,
-            </div>
-            <div style="display:inline-block">
-              <a href="https://www.princeton.edu/~pmittal/"> Prateek Mittal</a>
-              <sup style="font-size:15px">1</sup>
-              </div>
-    </span>
-	</center>
-    <!--------------------- affiliations --------------------->
-    <div class="gap-5"></div>
-    <div class="row">
-      <div class="col-md-3"></div>
-      <div class="col-md-3">
-        <center><span style="font-size:20px">
-          Princeton University<sup style="font-size:15px">1</sup>
-        </span></center>
+      <hr>
+
+      <div class="links">
+        <span><b>ICML 2023</b></span>
+        &nbsp;&nbsp;
+        <a href="https://arxiv.org/abs/2301.12576"><i class="fas fa-file-pdf"></i> Paper</a>
+        <a href="bibtex.txt"><i class="fas fa-quote-right"></i> BibTeX</a>
+        <a href="https://github.com/inspire-group/tta_risk"><i class="fab fa-github"></i> Code</a>
       </div>
-      <div class="col-md-3">
-        <center><span style="font-size:20px">
-          PSU <sup style="font-size:15px">2</sup>
-        </span></center>
+
+      <img class="main-image" src="images/TTAP.png" alt="Test-Time Adaptation Diagram">
+      
+      <p class="caption">
+        Test-time Adaptation (TTA), where a model is modified based on the test data it sees, has been a promising solution for distribution shift. This paper demonstrates that TTA is subject to novel security risks, where malicious test data can cause predictions about clean and unperturbed data to be incorrect. This suggests that adaptive model (model relies on the interaction of test inputs) have yet another attack vector that can be exploited. [<a href="https://newsletter.mlsafety.org/i/103568981/adaptive-models-can-be-exploited-by-adversaries">Source</a>]
+      </p>
+
+      <hr>
+
+      <h2 class="section-title">Abstract</h2>
+      
+      <div class="abstract">
+        <p>
+          Recently, test-time adaptation (TTA) has been proposed as a promising solution for addressing
+          distribution shifts. It allows a base model to adapt to an unforeseen distribution during
+          inference by leveraging the information from the batch of (unlabeled) test data. However,
+          we uncover a novel security vulnerability of TTA based on the insight that predictions on
+          benign samples can be impacted by malicious samples in the same batch. To exploit this
+          vulnerability, we propose Distribution Invading Attack (DIA), which injects a small fraction of
+          malicious data into the test batch. DIA causes models using TTA to misclassify benign and
+          unperturbed test data, providing an entirely new capability for adversaries that is infeasible in
+          canonical machine learning pipelines. Through comprehensive evaluations, we demonstrate the
+          high effectiveness of our attack on multiple benchmarks across six TTA methods. In response,
+          we investigate two countermeasures to robustify the existing insecure TTA implementations,
+          following the principle of "security by design". Together, we hope our findings can make the
+          community aware of the utility-security tradeoffs in deploying TTA and provide valuable insights
+          for developing robust TTA approaches.
+        </p>
       </div>
-      <div class="col-md-3"></div>
+
+      <hr>
+
+      <h2 class="section-title">Paper</h2>
+      
+      <div class="paper-preview">
+        <a href="https://arxiv.org/abs/2301.12576">
+          <img src="images/paper.png" alt="Paper Preview" style="border:1px solid #ddd;">
+        </a>
+      </div>
     </div>
-    <hr>
 
-    <!--------------------- links --------------------->
-    <div class="gap-10"></div>
-
-    <center>
-    <span style="font-size:20px"> 
-      <b>ICML 2023</b>
-      &nbsp; 
-      [<a href="https://arxiv.org/abs/2301.12576">Paper</a>]
-      &nbsp;
-      [<a href="bibtex.txt">BibTeX</a>]
-      &nbsp; 
-      [<a href="https://github.com/inspire-group/tta_risk"> Code</a>]
-    </span>
-    <div class="gap-20"></div>
-
-    </center>
-<img width="100%" src="images/TTAP.png">
-<p></p>
-<p><i>
-  Test-time Adaptation (TTA), where a model is modified based on the test data it sees, has been a promising solution for distribution shift. This paper demonstrates that TTA is subject to novel security risks, where malicious test data can cause predictions about clean and unperturbed data to be incorrect. This suggests that adaptive model (model relies on the interaction of test inputs) have yet another attack vector that can be exploited. [<a href="https://newsletter.mlsafety.org/i/103568981/adaptive-models-can-be-exploited-by-adversaries">Source</a>]
-  </i></p>
-<hr>
-    <!--------------------- abstract --------------------->
-    <div class="gap-20"></div>
-    <center><b><span style="font-size:25px">Abstract</span></b><br></center>
-    <div class="gap-10"></div>
-    <p> 
-      Recently, test-time adaptation (TTA) has been
-      proposed as a promising solution for addressing
-      distribution shifts. It allows a base model
-      to adapt to an unforeseen distribution during
-      inference by leveraging the information from
-      the batch of (unlabeled) test data. However,
-      we uncover a novel security vulnerability of
-      TTA based on the insight that predictions on
-      benign samples can be impacted by malicious
-      samples in the same batch. To exploit this
-      vulnerability, we propose Distribution Invading
-      Attack (DIA), which injects a small fraction of
-      malicious data into the test batch. DIA causes
-      models using TTA to misclassify benign and
-      unperturbed test data, providing an entirely new
-      capability for adversaries that is infeasible in
-      canonical machine learning pipelines. Through
-      comprehensive evaluations, we demonstrate the
-      high effectiveness of our attack on multiple
-      benchmarks across six TTA methods. In response,
-      we investigate two countermeasures to robustify
-      the existing insecure TTA implementations,
-      following the principle of “security by design”.
-      Together, we hope our findings can make the
-      community aware of the utility-security tradeoffs
-      in deploying TTA and provide valuable insights
-      for developing robust TTA approaches.
-    </p>
-    <hr>
-    <!--------------------- abstract --------------------->
-
-    <!--------------------- content --------------------->
-    <div class="gap-20"></div>
-    <center><b><span style="font-size:25px">Paper</span></b>
-    
-    <br>
-    <div class="gap-20"></div>
-    <a href="https://arxiv.org/abs/2301.12576"><img class="paper" src="images/paper.png" style="border:1px solid #000000;" alt=""></a></center>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
   </body>
-  </div>
-
-  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="js/bootstrap.min.js"></script>
-
 </html>
